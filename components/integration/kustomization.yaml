@@ -1,17 +1,13 @@
 resources:
-- allow-argocd-to-manage.yaml
-- argocd-permissions.yaml
-- https://github.com/redhat-appstudio/integration-service/config/default?ref=13a6402c2f76c3aa51dd889dc86844ecc4465870
-
+  - allow-argocd-to-manage.yaml
+  - argocd-permissions.yaml
+  - https://github.com/hongweiliu17/integration-service/config/default?ref=057886f8237c9c48436e3107f286603308d69534
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-
 images:
-- name: quay.io/redhat-appstudio/integration-service
-  newName: quay.io/redhat-appstudio/integration-service
-  newTag: 13a6402c2f76c3aa51dd889dc86844ecc4465870
-
+  - name: quay.io/redhat-appstudio/integration-service
+    newName: quay.io/redhat-appstudio/pull-request-builds
+    newTag: integration-service-057886f8237c9c48436e3107f286603308d69534
 namespace: integration-service
-
 patches:
   - path: ./manager_resources_patch.yaml
